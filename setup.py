@@ -23,14 +23,14 @@ relevant software that uses these. They are packaged under the name of jhelp.
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import distutils.core		#from distutils.core import setup, Extension
-import src.misc			# i wrote this
+import src.misc as misc		# i wrote this
 
 # SETUP #######################################################################
 distutils.core.setup(
 	name = 'jhelp',
-	version = src.misc.get_version(),
+	version = misc.get_version(),
 	packages = ['jhelp'],
 	package_dir = {'jhelp':'src'},
-	data_files = src.misc.get_capitalized_files()
+	data_files = misc.get_capitalized_files()
 )
 
