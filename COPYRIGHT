@@ -1,0 +1,26 @@
+Copyright (C) 2008-2010  James Shubin, McGill University
+Written for McGill University by James Shubin <purpleidea@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+This program, the associated files, and libraries were branched from original
+code written by James Shubin <purpleidea@gmail.com> in his personal time. It
+was graciously released by the author under the above license which this
+project continues to use. The decision to follow the licensing decisions of the
+original author was approved by the aforementioned author's McGill supervisor.
+McGill University, makes contributions to the code base through the employment
+of the original author, with the purpose of providing McGill University and the
+software community with useful free and open source tools. All code is provided
+under the above license unless otherwise stated in the file header.
+
