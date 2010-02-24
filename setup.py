@@ -25,9 +25,11 @@ relevant software that uses these. They are packaged under the name of jhelp.
 import sys			# for sys.modules
 import pydoc
 import distutils.core		#from distutils.core import setup, Extension
-import src.misc as misc		# i wrote this
+from src import misc		# i wrote this
+from src import uninstall	# custom distutils uninstall & install commands
 
 # VARIABLES ###################################################################
+# this pulls the one-line description and long description from the docstring
 description, ldescription = pydoc.splitdoc(pydoc.getdoc(sys.modules[__name__]))
 
 # SETUP #######################################################################
@@ -47,6 +49,9 @@ distutils.core.setup(
 	],
 	packages = ['jhelp'],
 	package_dir = {'jhelp':'src'},
-	data_files = misc.get_capitalized_files()
+	data_files = misc.get_capitalized_files(),
+	cmdclass={
+		'install': uninstall.install, 'uninstall': uninstall.uninstall
+	}
 )
 
