@@ -22,6 +22,7 @@ relevant software that uses these. They are packaged under the name of jhelp.
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os			# for path manipulation stuff
 import sys			# for sys.modules
 import pydoc
 import distutils.core		#from distutils.core import setup, Extension
@@ -29,27 +30,28 @@ from src import misc		# i wrote this
 from src import uninstall	# custom distutils uninstall & install commands
 
 # VARIABLES ###################################################################
+NAME = os.path.basename(os.getcwd())	# should be 'jhelp' or name of this dir
 # this pulls the one-line description and long description from the docstring
-description, ldescription = pydoc.splitdoc(pydoc.getdoc(sys.modules[__name__]))
+DESCRIPTION, LDESCRIPTION = pydoc.splitdoc(pydoc.getdoc(sys.modules[__name__]))
 
 # SETUP #######################################################################
 distutils.core.setup(
-	name = 'jhelp',
+	name = NAME,
 	version = misc.get_version(),
 	author='James Shubin',
 	author_email='purpleidea@gmail.com',
 	url='http://www.cs.mcgill.ca/~james/code/',
-	description=description,
-	long_description=ldescription,
+	description=DESCRIPTION,
+	long_description=LDESCRIPTION,
 	# http://pypi.python.org/pypi?%3Aaction=list_classifiers
 	classifiers=[
 		'Intended Audience :: Developers',
 		'License :: OSI Approved :: GNU Affero General Public License v3',
 		'Topic :: Software Development :: Libraries'
 	],
-	packages = ['jhelp'],
-	package_dir = {'jhelp':'src'},
-	data_files = misc.get_capitalized_files(),
+	packages = [NAME],
+	package_dir = {NAME:'src'},
+	data_files = [('share/%s' % NAME, misc.get_capitalized_files())],
 	cmdclass={
 		'install': uninstall.install, 'uninstall': uninstall.uninstall
 	}

@@ -67,13 +67,13 @@ install: clean
 
 # uninstall the packages
 uninstall:
-	# TODO
-	echo 'TODO: once uninstall distutils script is in the jhelp package.'
+	sudo python setup.py uninstall
 
 
 # purge all extra unwanted files
-#purge: uninstall
+purge: uninstall
 #	# TODO: remove any log files generated
+	echo 'TODO: delete install.log file'
 #	# empty man index even though this should eventually get updated by cron
 #	#sudo mandb
 
