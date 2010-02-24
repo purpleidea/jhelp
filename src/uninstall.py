@@ -7,7 +7,7 @@ Implements the Distutils 'uninstall' command and a replacement (inheriting)
 install command to add in the hooks to make the uninstall command happy.
 """
 
-# Copyright (C) 2009  James Shubin, McGill University
+# Copyright (C) 2009-2010  James Shubin, McGill University
 # Written for McGill University by James Shubin <purpleidea@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify

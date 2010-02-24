@@ -8,7 +8,7 @@ simple, direct way (based on magic templates) to write *roff manuals, without
 remembering nearly as much *roff as someone much more hardcore would expect you
 to.
 """
-# Copyright (C) 2009  James Shubin, McGill University
+# Copyright (C) 2009-2010  James Shubin, McGill University
 # Written for McGill University by James Shubin <purpleidea@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify

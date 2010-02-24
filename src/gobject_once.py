@@ -6,7 +6,7 @@ This module adds the gobject.once_add and gobject.once_add_seconds functions to
 an existing gobject modules namespace. These are useful for one time executions
 like displaying welcome messages that we don't want to run with idle_add calls.
 """
-# Copyright (C) 2008-2009  James Shubin, McGill University
+# Copyright (C) 2008-2010  James Shubin, McGill University
 # Written for McGill University by James Shubin <purpleidea@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify

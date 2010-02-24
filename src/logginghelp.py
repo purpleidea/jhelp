@@ -12,7 +12,7 @@ example:
 You can set various parameters of the logging help class on instantiation for
 fine grained control of logging behaviour.
 """
-# Copyright (C) 2008-2009  James Shubin, McGill University
+# Copyright (C) 2008-2010  James Shubin, McGill University
 # Written for McGill University by James Shubin <purpleidea@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
