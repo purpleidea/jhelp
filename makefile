@@ -27,7 +27,7 @@ VERSION := $(shell cat VERSION)
 PWD := $(shell pwd)
 
 # executables
-RMTOOL = rm -i
+RMTOOL = rm
 
 # where does www source get pushed to and metadata file path
 WWW = $(PWD)/../www/code/$(NAME)/
@@ -51,6 +51,8 @@ all:
 clean: force
 	# let distutils try to clean up first
 	python setup.py clean
+	# remove the generated manifest file
+	if [ -e MANIFEST ]; then $(RMTOOL) MANIFEST; fi
 	# remove any python mess
 	#$(RMTOOL) *.pyc 2> /dev/null || true
 	# remove distutils mess
