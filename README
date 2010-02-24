@@ -1,0 +1,11 @@
+README file for jhelp.
+
+This installer packages together a set of miscellaneous libraries that I have
+written or use often enough to warrant a dedicated repository to be shared by
+relevant software that uses these. They are packaged under the name of jhelp.
+
+Some documentation is included inline in the individual modules docstrings.
+
+For newer versions, comments and bug reporting, see the upstream website at:
+http://www.cs.mcgill.ca/~james/code/
+

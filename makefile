@@ -1,20 +1,20 @@
 #
-#    Makefile for jhelp packages.
-#    Copyright (C) 2009-2010  James Shubin, McGill University
-#    Written for McGill University by James Shubin <purpleidea@gmail.com>
+# Makefile for jhelp packages.
+# Copyright (C) 2009-2010  James Shubin, McGill University
+# Written for McGill University by James Shubin <purpleidea@gmail.com>
 #
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
 # name of this project
@@ -41,10 +41,10 @@ all:
 	echo -e '- clean:\tcleans up any files that can be generated again.'
 	echo -e '- install:\tinstalls this package on the machine.'
 	echo -e '- uninstall:\tuninstalls this package from the machine.'
-	echo -e '- purge:\tdelete all traces of this package from the machine.'
+	echo -e '- purge:\tdelete all traces of the install from the machine.'
 	echo -e '- source:\tmake a source archive for distribution.'
 	echo -e '- www:\t\tput an archive on the local webserver.'
-	echo -e '- man:\t\tbuild the man pages and then view them.'
+	#echo -e '- man:\t\tbuild the man pages and then view them.'
 
 
 # clean up any mess that can be generated
@@ -53,11 +53,10 @@ clean: force
 	python setup.py clean
 	# remove the generated manifest file
 	if [ -e MANIFEST ]; then $(RMTOOL) MANIFEST; fi
-	# remove any python mess
-	#$(RMTOOL) *.pyc 2> /dev/null || true
-	# remove distutils mess
-	#$(RMTOOL) -r build/ 2> /dev/null || true
-	#$(RMTOOL) -r dist/ 2> /dev/null || true
+	# remove distutils mess with -f because they're write protected
+	if [ -e build/ ]; then $(RMTOOL) -rf build/; fi
+	# _lastly_ remove any python mess (let above scripts rm the bulk first)
+	find . -name '*.pyc' -type f -print0 | xargs -0 rm -f
 
 
 # this runs distutils for the install
@@ -74,9 +73,9 @@ uninstall:
 
 # purge all extra unwanted files
 purge: uninstall
-#	# TODO: remove any log files generated
-	echo 'TODO: delete install.log file'
-#	# empty man index even though this should eventually get updated by cron
+#	# remove the install log file generated if it exists
+	if [ -e install.log ]; then $(RMTOOL) install.log; fi
+#	# empty man index even though it should eventually get updated by cron
 #	#sudo mandb
 
 

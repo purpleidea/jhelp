@@ -51,7 +51,10 @@ distutils.core.setup(
 	],
 	packages = [NAME],
 	package_dir = {NAME:'src'},
-	data_files = [('share/%s' % NAME, misc.get_capitalized_files())],
+	data_files = [
+		('share/%s' % NAME, 'makefile'),
+		('share/%s' % NAME, misc.get_capitalized_files())
+	],
 	cmdclass={
 		'install': uninstall.install, 'uninstall': uninstall.uninstall
 	}
