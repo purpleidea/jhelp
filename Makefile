@@ -27,12 +27,13 @@ VERSION := $(shell cat VERSION)
 PWD := $(shell pwd)
 
 # executables
-RMTOOL = rm
+RMTOOL = rm -i
 
-# where does www source get pushed to and metadata file path
+# www source and metadata paths
 WWW = $(PWD)/../www/code/$(NAME)/
 METADATA = $(WWW)/$(NAME)
 
+PREFIX = /usr/
 
 # if someone runs make without a target, print some useful messages
 all:
@@ -55,7 +56,7 @@ clean: force
 	if [ -e MANIFEST ]; then $(RMTOOL) MANIFEST; fi
 	# remove distutils mess with -f because they're write protected
 	if [ -e build/ ]; then $(RMTOOL) -rf build/; fi
-	# _lastly_ remove any python mess (let above scripts rm the bulk first)
+	# remove any python mess (let above scripts rm the bulk first)
 	find . -name '*.pyc' -type f -print0 | xargs -0 rm -f
 
 
