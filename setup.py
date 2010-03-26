@@ -52,7 +52,7 @@ distutils.core.setup(
 	packages = [NAME],
 	package_dir = {NAME:'src'},
 	data_files = [
-		('share/%s' % NAME, ['makefile']),
+		('share/%s' % NAME, ['Makefile']),
 		('share/%s' % NAME, misc.get_capitalized_files())
 	],
 	cmdclass={
