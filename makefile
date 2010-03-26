@@ -15,7 +15,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+
 
 # name of this project
 NAME := $(shell basename `pwd`)
@@ -59,19 +59,19 @@ clean: force
 	find . -name '*.pyc' -type f -print0 | xargs -0 rm -f
 
 
-# this runs distutils for the install
+# this installs code to your machine
 install: clean
 	python setup.py build
 	sudo python setup.py install
 	#sudo mandb	# update the man index for `apropos' and `whatis'
 
 
-# uninstall the packages
+# uninstalls the package
 uninstall:
 	sudo python setup.py uninstall
 
 
-# purge all extra unwanted files
+# purge any unwanted files
 purge: uninstall
 #	# remove the install log file generated if it exists
 	if [ -e install.log ]; then $(RMTOOL) install.log; fi
