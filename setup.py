@@ -26,18 +26,18 @@ import os			# for path manipulation stuff
 import sys			# for sys.modules
 import pydoc
 import distutils.core		#from distutils.core import setup, Extension
-from src import misc		# i wrote this
+from src import misc		# for get_version, get_capitalized_files
 from src import uninstall	# custom distutils uninstall & install commands
 
 # VARIABLES ###################################################################
-NAME = os.path.basename(os.getcwd())	# should be 'jhelp' or name of this dir
+NAME = os.path.basename(os.getcwd())	# should be the name of this dir
 # this pulls the one-line description and long description from the docstring
 DESCRIPTION, LDESCRIPTION = pydoc.splitdoc(pydoc.getdoc(sys.modules[__name__]))
 
 # SETUP #######################################################################
 distutils.core.setup(
-	name = NAME,
-	version = misc.get_version(),
+	name=NAME,
+	version=misc.get_version(),
 	author='James Shubin',
 	author_email='purpleidea@gmail.com',
 	url='http://www.cs.mcgill.ca/~james/code/',
@@ -47,10 +47,10 @@ distutils.core.setup(
 	classifiers=[
 		'Intended Audience :: Developers',
 		'License :: OSI Approved :: GNU Affero General Public License v3',
-		'Topic :: Software Development :: Libraries'
+		'Topic :: Software Development :: Libraries',
 	],
-	packages = [NAME],
-	package_dir = {NAME:'src'},
+	packages=[NAME],
+	package_dir={NAME:'src'},
 	data_files = [
 		('share/%s' % NAME, ['Makefile']),
 		('share/%s' % NAME, misc.get_capitalized_files())
