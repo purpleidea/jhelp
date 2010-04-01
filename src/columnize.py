@@ -4,6 +4,7 @@
 array of strings.
 
 Adapted from the routine of the same name inside cmd.py"""
+# from: http://code.google.com/p/pycolumnize/
 import types
 
 def columnize(array, displaywidth=80, colsep = '  ', 
