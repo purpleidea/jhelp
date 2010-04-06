@@ -72,7 +72,10 @@ def prefix(join=None):
 
 
 if __name__ == '__main__':
-	result = prefix()
+	join = None
+	if len(sys.argv) > 1:
+		join = ' '.join(sys.argv[1:])
+	result = prefix(join)
 	if result:
 		print result
 	else:
