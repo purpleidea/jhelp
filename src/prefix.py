@@ -64,9 +64,7 @@ def prefix(join=None):
 			#if DEBUG: print 'rule failed'
 			return False
 
-	# usually returns: /usr/ or /usr/local/ (without slash postfix)
-	return path
-
+	# usually returns: /usr/ or /usr/local/ (but without slash postfix)
 	if join is None:
 		return path
 	else:
