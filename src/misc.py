@@ -24,6 +24,7 @@ import os
 _ = lambda x: x			# add fake gettext function until i fix up i18n
 __all__ = ('get_authors', 'get_license', 'get_version', 'get_home',
 	'get_capitalized_files',
+	'path_search',
 )
 
 
@@ -81,6 +82,17 @@ def get_capitalized_files(wd=None):
 	if wd is None: wd = os.getcwd()
 	files = os.listdir(wd)
 	return [filename for filename in files if filename.isupper()]
+
+
+def path_search(filename, paths=[]):
+	"""Return the first full path to filename found in the search array."""
+	# accepts either a list of paths, or a traditional path search string
+	if isinstance(paths, str): paths = paths.split(':')
+	for path in paths:
+		f = os.path.join(path, filename)
+		if os.path.isfile(f):
+			return f
+	return False
 
 
 if __name__ == '__main__':
