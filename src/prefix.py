@@ -35,7 +35,6 @@ import sys
 
 def prefix(join=None):
 	"""Returns the prefix that this code was installed into."""
-
 	# constants for this execution
 	path = os.path.abspath(__file__)
 	#if DEBUG: print 'path: %s' % path
