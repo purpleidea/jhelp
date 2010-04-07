@@ -95,7 +95,7 @@ if __name__ == '__main__':
 	(options, args) = parser.parse_args()
 
 	if options.execute:
-		print eval(options.execute)()
+		print eval(options.execute)(*args)
 	else:
 		parser.error(_('No function specified.'))
 
