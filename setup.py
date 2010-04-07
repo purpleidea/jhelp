@@ -28,9 +28,10 @@ import pydoc
 import distutils.core		#from distutils.core import setup, Extension
 from src import misc		# for get_version, get_capitalized_files
 from src import uninstall	# custom distutils uninstall & install commands
+from src import prefix		# used to find the name of this project
 
 # VARIABLES ###################################################################
-NAME = os.path.basename(os.getcwd())	# should be the name of this dir
+NAME = prefix.name('src')		# should be the name of this dir
 # this pulls the one-line description and long description from the docstring
 DESCRIPTION, LDESCRIPTION = pydoc.splitdoc(pydoc.getdoc(sys.modules[__name__]))
 
