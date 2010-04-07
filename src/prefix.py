@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-"""Find the prefix of the current installation.
+"""Find the prefix of the current installation, and other useful variables.
 
 Finding the prefix that your program has been installed in can be non-trivial.
 This simplifies the process by allowing you to import <packagename>.prefix and
@@ -26,7 +26,7 @@ Example: x=`./prefix.py`; echo 'prefix: '$x
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__all__ = ('prefix')
+__all__ = ('prefix', 'name')
 #DEBUG = False
 
 import os
@@ -69,6 +69,22 @@ def prefix(join=None):
 		return path
 	else:
 		return os.path.join(path, join)	# add on join if it exists!
+
+
+def name(pop=[]):
+	"""Returns the name of this particular project. If pop is a list
+	containing more than one element, name() will remove those items
+	from the path tail before deciding on the project name. If there
+	is an element which does not exist in the path tail, then raise."""
+	path = os.path.dirname(os.path.abspath(__file__))
+	if isinstance(pop, str): pop = [pop]	# force single strings to list
+	while len(pop) > 0:
+		(path, tail) = os.path.split(path)
+		if pop.pop() != tail:
+			#if DEBUG: print 'tail: %s' % tail
+			raise ValueError('Element doesnʼt match path tail.')
+
+	return os.path.basename(path)
 
 
 if __name__ == '__main__':
