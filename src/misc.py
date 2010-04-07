@@ -23,7 +23,7 @@ This is an assortment of small functions that don't belong anywhere important.
 import os
 _ = lambda x: x			# add fake gettext function until i fix up i18n
 __all__ = ('get_authors', 'get_license', 'get_version', 'get_home',
-	'get_capitalized_files'
+	'get_capitalized_files',
 )
 
 
