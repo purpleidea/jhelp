@@ -21,10 +21,12 @@ This is an assortment of small functions that don't belong anywhere important.
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import glob
 _ = lambda x: x			# add fake gettext function until i fix up i18n
 __all__ = ('get_authors', 'get_license', 'get_version', 'get_home',
 	'get_capitalized_files',
 	'path_search',
+	'path_search_glob',
 )
 
 
@@ -92,6 +94,18 @@ def path_search(filename, paths=[]):
 		f = os.path.join(path, filename)
 		if os.path.isfile(f):
 			return f
+	return False
+
+
+def path_search_glob(fileglob, paths=[]):
+	"""Return the first full path matching fileglob in the search array."""
+	# accepts either a list of paths, or a traditional path search string
+	if isinstance(paths, str): paths = paths.split(':')
+	for path in paths:
+		f = os.path.join(path, fileglob)
+		g = glob.glob(f)
+		if len(g) > 0:
+			return g
 	return False
 
 
