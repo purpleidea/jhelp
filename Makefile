@@ -36,6 +36,9 @@ EXT = .tar.bz2
 
 PREFIX = /usr/
 
+.PHONY: all clean install uninstall purge man source www perms
+.SILENT:
+
 
 # if someone runs make without a target, print some useful messages
 all:
@@ -51,7 +54,7 @@ all:
 
 
 # clean up any mess that can be generated
-clean: force
+clean:
 	# let distutils try to clean up first
 	python setup.py clean
 	# remove the generated manifest file
@@ -82,20 +85,20 @@ purge: uninstall
 #	#sudo mandb
 
 
-# make a source package for distribution
-source: clean
-	python setup.py sdist --formats=bztar
-
-
 # build the man pages, and then view them
-#man: force
+#man:
 #	python setup.py build_manpages
 #	cd man/ ;\
 #	./viewthis.sh
 
 
+# make a source package for distribution
+source: clean
+	python setup.py sdist --formats=bztar
+
+
 # move current version to www folder
-www: force
+www:
 	# rsync directories so they are equivalent in terms of files with: $EXT
 	rsync -avz --include=*$(EXT) --exclude='*' --delete dist/ $(WWW)
 	# empty the file
@@ -116,12 +119,4 @@ perms:
 	find . -type d -perm u=rwx -exec chmod go+rx {} \;
 	find . -type f -perm u=rw -exec chmod go+r {} \;
 	find . -type f -perm u=rwx -exec chmod go+rx {} \;
-
-
-# depend on this fake target to cause a target to always run
-force: ;
-
-
-# this target silences echoing of any target which has it as a dependency.
-.SILENT:
 
