@@ -51,13 +51,13 @@ distutils.core.setup(
 		'Topic :: Software Development :: Libraries',
 	],
 	packages=[NAME],
-	package_dir={NAME:'src'},
-	data_files = [
+	package_dir={NAME: 'src'},
+	data_files=[
 		('share/%s' % NAME, ['Makefile']),
-		('share/%s' % NAME, misc.get_capitalized_files())
+		('share/%s' % NAME, misc.get_capitalized_files()),
 	],
 	cmdclass={
-		'install': uninstall.install, 'uninstall': uninstall.uninstall
+		'install': uninstall.install, 'uninstall': uninstall.uninstall,
 	}
 )
 
