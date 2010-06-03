@@ -22,7 +22,6 @@ relevant software that uses these. They are packaged under the name of jhelp.
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os			# for path manipulation stuff
 import sys			# for sys.modules
 import pydoc
 import distutils.core		#from distutils.core import setup, Extension
