@@ -17,11 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# name of this project
-NAME := $(shell basename `pwd`)
-
 # version of the program
 VERSION := $(shell cat VERSION)
+
+# name of this project
+NAME := $(shell basename `pwd` "-$(VERSION)")
 
 # where am i ?
 PWD := $(shell pwd)
