@@ -90,7 +90,7 @@ def path_search(filename, paths=[]):
 	"""Return the first full path to filename found in the search array."""
 	# accepts either a list of paths, or a traditional path search string
 	if isinstance(paths, str): paths = paths.split(':')
-	for path in paths:
+	for path in [x for x in paths if x is not None]:
 		f = os.path.join(path, filename)
 		if os.path.isfile(f):
 			return f
@@ -101,7 +101,7 @@ def path_search_glob(fileglob, paths=[]):
 	"""Return the first full path matching fileglob in the search array."""
 	# accepts either a list of paths, or a traditional path search string
 	if isinstance(paths, str): paths = paths.split(':')
-	for path in paths:
+	for path in [x for x in paths if x is not None]:
 		f = os.path.join(path, fileglob)
 		g = glob.glob(f)
 		if len(g) > 0:
