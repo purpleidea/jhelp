@@ -70,11 +70,12 @@ def prefix(join=None):
 		return os.path.join(path, join)	# add on join if it exists!
 
 
-def name(pop=[]):
+def name(pop=[], suffix=None):
 	"""Returns the name of this particular project. If pop is a list
 	containing more than one element, name() will remove those items
 	from the path tail before deciding on the project name. If there
-	is an element which does not exist in the path tail, then raise."""
+	is an element which does not exist in the path tail, then raise.
+	If a suffix is specified, then it is removed if found at end."""
 	path = os.path.dirname(os.path.abspath(__file__))
 	if isinstance(pop, str): pop = [pop]	# force single strings to list
 	while len(pop) > 0:
@@ -83,7 +84,10 @@ def name(pop=[]):
 			#if DEBUG: print 'tail: %s' % tail
 			raise ValueError('Element doesnʼt match path tail.')
 
-	return os.path.basename(path)
+	path = os.path.basename(path)
+	if suffix is not None and path.endswith(suffix):
+		path = path[0:-len(suffix)]
+	return path
 
 
 if __name__ == '__main__':
